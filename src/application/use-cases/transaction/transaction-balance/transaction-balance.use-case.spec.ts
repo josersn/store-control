@@ -11,33 +11,32 @@ describe("Transactions balance use case", () => {
   const createTransactionUseCase = new CreateTransactionUseCase(service);
 
   async function generateDate() {
-    // await createTransactionUseCase.exec({
-    //   value: 1000,
-    //   transactionType: TransactionType.credit,
-    //   paymentMethod: PaymentMethod.bank_slip,
-    // });
+    await createTransactionUseCase.exec({
+      value: 1000,
+      transactionType: TransactionType.credit,
+      paymentMethod: PaymentMethod.bank_slip,
+    });
 
-    // await createTransactionUseCase.exec({
-    //   value: 500,
-    //   transactionType: TransactionType.credit,
-    //   paymentMethod: PaymentMethod.pix,
-    // });
+    await createTransactionUseCase.exec({
+      value: 500,
+      transactionType: TransactionType.credit,
+      paymentMethod: PaymentMethod.pix,
+    });
 
-    // await createTransactionUseCase.exec({
-    //   value: 300,
-    //   transactionType: TransactionType.debit,
-    //   paymentMethod: PaymentMethod.pix,
-    // });
+    await createTransactionUseCase.exec({
+      value: 300,
+      transactionType: TransactionType.debit,
+      paymentMethod: PaymentMethod.pix,
+    });
   }
 
   it("Should return the daily balance", async () => {
-    const useCase = new TransactionBalanceUseCase();
+    const useCase = new TransactionBalanceUseCase(service);
 
     await generateDate();
 
     const balance = await useCase.exec();
 
-    expect(balance).toEqual(1200)
-
+    expect(balance).toEqual(1200);
   });
 });

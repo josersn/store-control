@@ -1,9 +1,13 @@
 import { TransactionDTO } from "../../dtos/transactionDTO";
+import { Transaction } from "../../entities/transaction";
 import { ITransactionRepository } from "../transaction-repository.interface";
 
 class TransactionRepositoryInMemory implements ITransactionRepository {
+  private transactions: Transaction[];
 
-  private transaction 
+  constructor() {
+    this.transactions = [];
+  }
 
   async create(data: TransactionDTO): Promise<TransactionDTO> {
     const transaction = {
@@ -14,7 +18,13 @@ class TransactionRepositoryInMemory implements ITransactionRepository {
       updatedAt: new Date(),
     };
 
+    this.transactions.push(transaction);
+
     return transaction;
+  }
+
+  findBy(data: any): Promise<TransactionDTO | TransactionDTO[] | undefined> {
+    throw new Error("Method not implemented.");
   }
 }
 
