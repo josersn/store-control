@@ -1,9 +1,11 @@
+import { TransactionDTO } from "../../domain/dtos/transactionDTO";
+
 interface ITransactionService {
-  create(data: any): Promise<any>;
+  create(data: TransactionDTO): Promise<TransactionDTO>;
 }
 
 class TransactionService implements ITransactionService {
-  async create(data: any): Promise<any> {
+  async create(data: TransactionDTO): Promise<TransactionDTO> {
     return {
       ...data,
       id: 1,

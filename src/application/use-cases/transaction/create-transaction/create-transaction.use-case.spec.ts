@@ -1,3 +1,5 @@
+import { PaymentMethod } from "../../../../domain/enums/paymentMethod";
+import { TransactionType } from "../../../../domain/enums/transactionType";
 import { TransactionService } from "../../../services/transaction.service";
 import { CreateTransactionUseCase } from "./create-transaction.use-case";
 
@@ -5,8 +7,8 @@ describe("Create Transaction Use Case", () => {
   it("Should be able to create a new transaction", async () => {
     const data = {
       value: 1000,
-      transactionType: "credit",
-      paymentMethod: "pix",
+      transactionType: TransactionType.credit,
+      paymentMethod: PaymentMethod.pix,
     };
 
     const service = new TransactionService();
