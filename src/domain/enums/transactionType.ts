@@ -1,6 +1,6 @@
 enum TransactionType {
-  debit = 'debit',
-  credit = 'credit',
+  debit,
+  credit,
 }
 
 export { TransactionType };
