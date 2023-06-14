@@ -1,4 +1,5 @@
-import { PaymentMethod, TransactionType } from "@prisma/client";
+import { PaymentMethod } from "../enums/paymentMethod";
+import { TransactionType } from "../enums/transactionType";
 
 interface TransactionDTO {
   id?: number;
