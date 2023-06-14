@@ -23,7 +23,10 @@ class TransactionRepositoryInMemory implements ITransactionRepository {
     return transaction;
   }
 
-  findBy(data: any): Promise<TransactionDTO | TransactionDTO[] | undefined> {
+  findByDate(
+    initial: string | Date,
+    end: string | Date
+  ): Promise<TransactionDTO[]> {
     throw new Error("Method not implemented.");
   }
 }

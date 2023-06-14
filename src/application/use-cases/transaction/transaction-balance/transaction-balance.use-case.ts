@@ -6,8 +6,12 @@ type ITransactionBalanceUseCase = IUseCase<null, number>;
 class TransactionBalanceUseCase implements ITransactionBalanceUseCase {
   constructor(private transactionService: ITransactionService) {}
 
-  async exec(): Promise<number> {
-    return 1200;
+  async exec(): Promise<any> {
+    const transactions = await this.transactionService.findTransactionByToday();
+
+    const balance = this.transactionService.calculateBalance(transactions);
+
+    return balance;
   }
 }
 
