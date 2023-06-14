@@ -6,3 +6,25 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Transaction {
+  id              Int             @id @default(autoincrement())
+  value           Int
+  transactionType TransactionType
+  paymentMethod   PaymentMethod
+  isActive        Boolean         @default(true)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+enum PaymentMethod {
+  pix
+  debit
+  credit
+  bank_slip
+}
+
+enum TransactionType {
+  debit
+  credit
+}
