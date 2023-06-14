@@ -1,3 +1,4 @@
+import { TransactionService } from "../../../services/transaction.service";
 import { CreateTransactionUseCase } from "./create-transaction.use-case";
 
 describe("Create Transaction Use Case", () => {
@@ -8,7 +9,8 @@ describe("Create Transaction Use Case", () => {
       paymentMethod: "pix",
     };
 
-    const useCase = new CreateTransactionUseCase();
+    const service = new TransactionService();
+    const useCase = new CreateTransactionUseCase(service);
 
     const transaction = await useCase.exec(data);
 

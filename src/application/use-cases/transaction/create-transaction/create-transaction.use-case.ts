@@ -1,4 +1,5 @@
 import { IUseCase } from "../../../core/use-case";
+import { ITransactionService } from "../../../services/transaction.service";
 
 interface IRequest {
   value: number;
@@ -9,11 +10,10 @@ interface IRequest {
 type ICreateTransactionUseCase = IUseCase<IRequest, any>;
 
 class CreateTransactionUseCase implements ICreateTransactionUseCase {
+  constructor(private transactionService: ITransactionService) {}
+
   async exec(data: IRequest): Promise<any> {
-    return {
-      ...data,
-      id: 1,
-    };
+    return this.transactionService.create(data);
   }
 }
 
