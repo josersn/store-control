@@ -2,14 +2,14 @@ import { FastifyReply } from "fastify";
 import { Controller, POST } from "fastify-decorators";
 import { TransactionService } from "../../application/services/transaction.service";
 import { CreateTransactionUseCase } from "../../application/use-cases/transaction/create-transaction/create-transaction.use-case";
-import { TransactionRepositoryInMemory } from "../../domain/repositories/in-memory/transaction-repository.in-memory";
+import { TransactionRepositoryPrisma } from "../database/prisma/repositories/transaction-repository.prisma";
 
 @Controller("transaction")
 export default class TransactionController {
   @POST("/")
   async create(req, reply: FastifyReply) {
     try {
-      const repository = new TransactionRepositoryInMemory();
+      const repository = new TransactionRepositoryPrisma();
       const service = new TransactionService(repository);
       const useCase = new CreateTransactionUseCase(service);
 
@@ -17,6 +17,7 @@ export default class TransactionController {
 
       return reply.status(201).send(transaction);
     } catch (error) {
+      console.log("aeeeeeecç",error)
       return reply.status(500).send();
     }
   }
