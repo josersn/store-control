@@ -1,15 +1,15 @@
 import { TransactionDTO } from "../../domain/dtos/transactionDTO";
+import { ITransactionRepository } from "../../domain/repositories/transaction-repository.interface";
 
 interface ITransactionService {
   create(data: TransactionDTO): Promise<TransactionDTO>;
 }
 
 class TransactionService implements ITransactionService {
+  constructor(private transactionRepository: ITransactionRepository) {}
+
   async create(data: TransactionDTO): Promise<TransactionDTO> {
-    return {
-      ...data,
-      id: 1,
-    };
+    return this.transactionRepository.create(data);
   }
 }
 

@@ -6,7 +6,7 @@ interface TransactionDTO {
   value: number;
   transactionType: TransactionType;
   paymentMethod: PaymentMethod;
-  isActive: boolean;
+  isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }

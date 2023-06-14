@@ -1,5 +1,6 @@
 import { PaymentMethod } from "../../../../domain/enums/paymentMethod";
 import { TransactionType } from "../../../../domain/enums/transactionType";
+import { TransactionRepositoryInMemory } from "../../../../domain/repositories/in-memory/transaction-repository.in-memory";
 import { TransactionService } from "../../../services/transaction.service";
 import { CreateTransactionUseCase } from "./create-transaction.use-case";
 
@@ -11,7 +12,8 @@ describe("Create Transaction Use Case", () => {
       paymentMethod: PaymentMethod.pix,
     };
 
-    const service = new TransactionService();
+    const repository = new TransactionRepositoryInMemory();
+    const service = new TransactionService(repository);
     const useCase = new CreateTransactionUseCase(service);
 
     const transaction = await useCase.exec(data);
