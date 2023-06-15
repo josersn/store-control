@@ -23,11 +23,11 @@ class TransactionRepositoryInMemory implements ITransactionRepository {
     return transaction;
   }
 
-  findByDate(
+  async findByDate(
     initial: string | Date,
     end: string | Date
   ): Promise<TransactionDTO[]> {
-    throw new Error("Method not implemented.");
+    return this.transactions;
   }
 }
 
