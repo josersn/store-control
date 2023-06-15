@@ -47,8 +47,7 @@ export default class TransactionController {
         balance
       });
     } catch (error) {
-      console.log(error)
-      // this.logger.error(`Error to get transaction | ${error}`);
+      this.logger.error(`Error to get transaction | ${error}`);
       return reply.status(500).send();
     }
   }
