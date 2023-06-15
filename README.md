@@ -62,4 +62,4 @@ This project follow this concept of programming, but you can analyze better in s
 ![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
 This project was coded with this schema
-![System](arch.png)
+![System](system.png)
